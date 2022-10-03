@@ -23,7 +23,8 @@ body {
     border-top: 1px solid #dee2e6;
 }
 .table-wrapper {
-    width: 450px;
+    width: 110%;
+	max-width: 400px;
     margin: 30px auto;
     background: #fff;
     padding: 20px;	
@@ -99,7 +100,7 @@ table.table td .add {
 </style>
 <script>
 function hh(obj) {
-    var row = '<tr><td>'+ obj["username"] +'</td><td style="width: 21%;">'+ obj["time"] +'</td><td><a class="add" title="" data-toggle="tooltip" data-original-title="Add"><i class="material-icons"></i></a><a class="edit" title="" data-toggle="tooltip" data-original-title="Edit"><i class="material-icons"></i></a><a class="delete" title="Delete"><i class="material-icons"></i></a></td></tr>';
+    var row = '<tr><td class="add1">'+ obj["username"] +'</td><td class="add1" style="width: 21%;">'+ obj["time"] +'</td><td style="text-align:center"><a class="delete" title="Delete"><i class="material-icons"></i></a></td></tr>';
     $("table").append(row)
 };
 function tableToJson(table) { 
@@ -132,16 +133,16 @@ $(document).ready(function(){
 	document.getElementById("cou").innerHTML = cou;
 		var index = $("table tbody tr:last-child").index();
         var row = '<tr>' +
-            '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-            '<td><input type="text" class="form-control" name="department" id="department"></td>' +
-			'<td>' + '<a class="add" title="" data-toggle="tooltip" data-original-title="Add"><i class="material-icons"></i></a><a class="edit" title="" data-toggle="tooltip" data-original-title="Edit"><i class="material-icons"></i></a><a class="delete" title="Delete"><i class="material-icons"></i></a>' + '</td>' +
+            '<td class="add1"><input  type="text" class="form-control" name="name" id="name"></td>' +
+            '<td class="add1"><input type="text" class="form-control" name="department" id="department"></td>' +
+			'<td style="text-align:center">' + '<a class="delete" title="Delete"><i class="material-icons"></i></a>' + '</td>' +
         '</tr>';
     	$("table").append(row);		
 		$("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
         $('[data-toggle="tooltip"]').tooltip();
     });
 	// Add row on add button click
-	$(document).on("click", ".add", function(){
+	$(document).on("focusout", ".add1", function(){
 		var empty = false;
 		var input = $(this).parents("tr").find('input[type="text"]');
         input.each(function(){
@@ -161,7 +162,7 @@ $(document).ready(function(){
 		}		
     });
 	// Edit row on edit button click
-	$(document).on("click", ".edit", function(){		
+	$(document).on("dblclick", ".add1", function(){		
         $(this).parents("tr").find("td:not(:last-child)").each(function(){
 			$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
 		});		
@@ -241,8 +242,8 @@ const getStyles = function () {
                 <thead>
                     <tr>
                         <th>username</th>
-                        <th style="width: 21%;">time</th>
-                        <th style="width: 18%;">Actions</th>
+                        <th style="width: 73px">time</th>
+                        <th style="width: 54px;text-align:center">delete</th>
                     </tr>
                 </thead>
                 <tbody>   
