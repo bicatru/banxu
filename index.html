@@ -207,7 +207,7 @@ const getStyles = function () {
 					fetch(`https://script.google.com/macros/s/AKfycbxQK3_qX848hdqeWd4fBkHQUFynuWnZ6M4qDZoWdR33iSDYTMihb7li_uvcyyQN0I1n/exec?action=${id}`, {
 			  redirect: "follow",
 			  method: "POST",
-			  body: JSON.stringify({"data":tableToJson(document.getElementsByClassName("table table-bordered")[0])}),
+			  body: JSON.stringify({"data":tableToJson(document.getElementsByClassName("table table-bordered")[0])}).toLowerCase(),
 			  headers: {
 				"Content-Type": "text/plain;charset=utf-8",
 			  },
