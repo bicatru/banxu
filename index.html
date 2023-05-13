@@ -120,7 +120,7 @@ function tableToJson(table) {
 $(document).ready(function(){
 	var id = document.URL.split("?")[1]
 	$(".add-new").attr("disabled", "disabled")
-	fetch(`https://script.google.com/macros/s/AKfycbxQK3_qX848hdqeWd4fBkHQUFynuWnZ6M4qDZoWdR33iSDYTMihb7li_uvcyyQN0I1n/exec?action=${id}`)           //api for the get request
+	fetch(`https://script.google.com/macros/s/AKfycbxYXMDiHQjslJyL7MN27gI0R3fZtQO_6ufS6x2nyZzK9SAVeZNq0Z5n2K95snGgHTLo/exec?action=${id}`)           //api for the get request
   .then(response => response.json())
   .then(data => {data.forEach(hh);
 				document.getElementById("cou").innerHTML = data.length;
@@ -206,7 +206,7 @@ const getStyles = function () {
 			alert("Lưu thành công");
 			console.log(id);
 			console.log(tableToJson(document.getElementsByClassName("table table-bordered")[0]))
-					fetch(`https://script.google.com/macros/s/AKfycbxQK3_qX848hdqeWd4fBkHQUFynuWnZ6M4qDZoWdR33iSDYTMihb7li_uvcyyQN0I1n/exec?action=${id}`, {
+					fetch(`https://script.google.com/macros/s/AKfycbxYXMDiHQjslJyL7MN27gI0R3fZtQO_6ufS6x2nyZzK9SAVeZNq0Z5n2K95snGgHTLo/exec?action=${id}`, {
 			  redirect: "follow",
 			  method: "POST",
 			  body: JSON.stringify({"data":tableToJson(document.getElementsByClassName("table table-bordered")[0])}).toLowerCase(),
